@@ -127,6 +127,10 @@ def get_index(list, item):
 
 #Example usage: python3 CIRT.5_embed.py --language EN --contexts 1 3 5 10 --thresholds 0.05 0.125 0.25 --model models/model --input in/db/ --output out/CIRT.5_embed/txt/
 
+#Pre-trained language models:
+#English Wikipedia: http://sites.labic.icmc.usp.br/Ms-Thesis_Antunes_2018/input/language-models/W2V-CBoW_Wikipedia/EN/2017-09-26/
+#Portuguese Wikipedia: http://sites.labic.icmc.usp.br/Ms-Thesis_Antunes_2018/input/language-models/W2V-CBoW_Wikipedia/PT/2017-09-26/
+
 #Defining script arguments:
 parser = argparse.ArgumentParser(description="CIRT.5_embed based text representation generator\n================================================")
 parser._action_groups.pop()
