@@ -4,7 +4,7 @@
 ##              Laboratory of Computational Intelligence (LABIC)              ##
 ##             --------------------------------------------------             ##
 ##       Originally developed by: João Antunes  (joao8tunes@gmail.com)        ##
-##       Laboratory: labic.icmc.usp.br    Personal: joaoantunes.esy.es        ##
+##          Lab: labic.icmc.usp.br    Own: joao8tunes.atwebpages.com          ##
 ##                                                                            ##
 ##   "Não há nada mais trabalhoso do que viver sem trabalhar". Seu Madruga    ##
 ################################################################################
@@ -218,23 +218,23 @@ else:
     log.write("\t- Validate words:\tno\n")
 
 if args.stoplist is not None:
-    log.write("\t- Stoplist:\t\t" + args.stoplist + "\n")
+    log.write("\t- Stoplist:\t\t\t" + args.stoplist + "\n")
 
 log.write("\t- Doc. frequency:\t>= " + str(args.doc_freq) + "\n")
 args.metric = args.metric.lower()
 
 if args.metric == "cf":
-    log.write("\t- Metric:\t\tCF\n")
+    log.write("\t- Metric:\t\t\tCF\n")
 elif args.metric == "idf":
-    log.write("\t- Metric:\t\tIDF\n")
+    log.write("\t- Metric:\t\t\tIDF\n")
 else:
     args.metric = "cf-idf"
-    log.write("\t- Metric:\t\tCF-IDF\n")
+    log.write("\t- Metric:\t\t\tCF-IDF\n")
 
 if args.show_shape:
-    log.write("\t- Show shape:\tyes\n")
+    log.write("\t- Show shape:\t\tyes\n")
 else:
-    log.write("\t- Show shape:\tno\n")
+    log.write("\t- Show shape:\t\tno\n")
 
 if args.show_features:
     log.write("\t- Show features:\tyes\n")
@@ -243,22 +243,22 @@ else:
 
 args.contexts.sort()
 args.thresholds.sort()
-log.write("\t- Contexts:\t\t" + ", ".join( map(str, args.contexts) ) + "\n")
+log.write("\t- Contexts:\t\t\t" + ", ".join( map(str, args.contexts) ) + "\n")
 log.write("\t- Thresholds:\t\t" + ", ".join( map(str, args.thresholds) ) + "\n")
 
 if args.model is None:
     log.write("\t- Dimensions:\t\t" + str(args.size) + "\n")
 
 log.write("\t- Min. count:\t\t" + str(args.min_count) + "\n")
-log.write("\t- Epochs:\t\t" + str(args.epochs) + "\n")
-log.write("\t- Language:\t\t" + args.language + "\n")
-log.write("\t- Threads:\t\t" + str(args.threads) + "\n")
+log.write("\t- Epochs:\t\t\t" + str(args.epochs) + "\n")
+log.write("\t- Language:\t\t\t" + args.language + "\n")
+log.write("\t- Threads:\t\t\t" + str(args.threads) + "\n")
 
 if args.model is not None:
-    log.write("\t- Model:\t\t" + args.model + "\n")
+    log.write("\t- Model:\t\t\t" + args.model + "\n")
 
-log.write("\t- Input:\t\t" + args.input + "\n")
-log.write("\t- Output:\t\t" + args.output + "\n\n")
+log.write("\t- Input:\t\t\t" + args.input + "\n")
+log.write("\t- Output:\t\t\t" + args.output + "\n\n")
 
 if not os.path.exists(args.input):
     print("ERROR: Input directory does not exists!\n\t!Directory: " + args.input)
@@ -649,7 +649,7 @@ print("- Output files: " + out_files)
 print("- Output sentences: " + out_sentences)
 print("..................................................\n")
 log.write("\n\n> Log:\n")
-log.write("\t- Time:\t\t\t" + time + "\n")
+log.write("\t- Time:\t\t\t\t" + time + "\n")
 log.write("\t- Input files:\t\t" + files + "\n")
 log.write("\t- Input paragraphs:\t" + paragraphs + "\n")
 log.write("\t- Input sentences:\t" + sentences + "\n")
