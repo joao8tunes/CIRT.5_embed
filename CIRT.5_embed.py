@@ -126,6 +126,7 @@ def get_index(list, item):
 #URL: https://github.com/joao8tunes/CIRT.5_embed
 
 #Example usage: python3 CIRT.5_embed.py --language EN --contexts 1 3 5 10 --thresholds 0.05 0.125 0.25 --model models/model --input in/db/ --output out/CIRT.5_embed/txt/
+#Obs: if you want to access the current directory where this script is running, you can use something like "../CURRENT_DIR/". Go back one level and explicitly specify the target directory.
 
 #Pre-trained language models:
 #English Wikipedia: http://sites.labic.icmc.usp.br/MSc-Thesis_Antunes_2018/input/language-models/W2V-CBoW_Wikipedia/EN/2017-09-26/
@@ -144,7 +145,8 @@ optional.add_argument("--doc_freq", metavar='INT', type=natural, action="store",
 optional.add_argument("--metric", metavar='STR', type=str, action="store", dest="metric", default="CF-IDF", nargs="?", const=True, required=False, help='metric of context relevance: cf, idf, [CF-IDF]')
 optional.add_argument("--validate_words", metavar='BOOL', type=str2bool, action="store", dest="validate_words", nargs="?", const=True, default=False, required=False, help='validate vocabulary ([A-Za-z0-9-_\']+): y, [N]')
 optional.add_argument("--stoplist", metavar='FILE_PATH', type=str, action="store", dest="stoplist", default=None, required=False, nargs="?", const=True, help='specify stoplist file')
-optional.add_argument("--print_features", metavar='BOOL', type=str2bool, action="store", dest="print_features", nargs="?", const=True, default=True, required=False, help='print features in matrix header: [Y], n')
+optional.add_argument("--show_shape", metavar='BOOL', type=str2bool, action="store", dest="show_shape", nargs="?", const=True, default=True, required=False, help='show shape in matrix header: [Y], n')
+optional.add_argument("--show_features", metavar='BOOL', type=str2bool, action="store", dest="show_features", nargs="?", const=True, default=True, required=False, help='show features in matrix header: [Y], n')
 required.add_argument("--contexts", metavar='INT', type=natural, action="store", dest="contexts", nargs="+", required=True, help='contexts sizes (>= 1)')
 required.add_argument("--thresholds", metavar='REAL', type=percentage, action="store", dest="thresholds", nargs="+", required=True, help='contexts thresholds (>= 0, <= 1)')
 optional.add_argument("--size", metavar='INT', type=natural, action="store", dest="size", default=300, nargs="?", const=True, required=False, help='num. (>= 1) of model dimensions (used by Word2Vec): [300]')
@@ -229,10 +231,15 @@ else:
     args.metric = "cf-idf"
     log.write("\t- Metric:\t\tCF-IDF\n")
 
-if args.print_features:
-    log.write("\t- Print features:\tyes\n")
+if args.show_shape:
+    log.write("\t- Show shape:\tyes\n")
 else:
-    log.write("\t- Print features:\tno\n")
+    log.write("\t- Show shape:\tno\n")
+
+if args.show_features:
+    log.write("\t- Show features:\tyes\n")
+else:
+    log.write("\t- Show features:\tno\n")
 
 args.contexts.sort()
 args.thresholds.sort()
@@ -580,9 +587,10 @@ for size in args.contexts:
         ### OUTPUT (WRITING TEXT REPRESENTATION MATRIX)                      ###
         ########################################################################
 
-        output_file.write(str(total_num_examples) + " " + str(len_features) + "\n")
+        if args.show_shape:
+            output_file.write(str(total_num_examples) + " " + str(len_features) + "\n")
 
-        if args.print_features:
+        if args.show_features:
             for feature in features:
                 output_file.write("[" + ", ".join(feature) + "]\t")
         else:
