@@ -10,7 +10,7 @@ python3 CIRT.5_embed.py --language EN --contexts 3 --thresholds 0.05 --model mod
 python3 Bag2Arff.py --input out/CIRT.5_embed/txt/ --output out/CIRT.5_embed/arff/
 ```
 
-![](https://joao8tunes.github.io/hello/wp-content/uploads/photo-gallery/LABIC_image_8_1538169499.png?bwg=1542306976)
+![](https://joao8tunes.github.io/hello/wp-content/uploads/photo-gallery/exemplo_etapa5.png?bwg=1542306976)
 
 # Related scripts
 * [CIRT.5_embed.py](https://github.com/joao8tunes/CIRT.5_embed/blob/master/CIRT.5_embed.py)
